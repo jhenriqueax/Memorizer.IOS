@@ -7,20 +7,49 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        HStack{
+        CardView()
+        CardView()
+        CardView()
+        CardView()
+            
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
+
+struct CardView: View{
+    var body: some View{
+        
+        ZStack(){
+            RoundedRectangle(cornerRadius: 20)
+                .stroke()
+            Text("🚀")
+        }
+        .foregroundColor(.red)
+    }
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+
