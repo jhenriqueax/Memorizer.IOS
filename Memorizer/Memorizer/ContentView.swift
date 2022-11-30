@@ -21,13 +21,15 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal)
-            
+            Spacer()
             HStack{
                 add
                 Spacer()
                 remove
                 
-            }.padding(.horizontal)
+            }
+            .padding(.horizontal)
+            .font(.largeTitle)
         }
     }
     
@@ -37,11 +39,13 @@ struct ContentView: View {
         
         Button(action: {
             
-            emojiCount += 1
+            if emojiCount < emojis.count{
+                emojiCount += 1
+            }
             
-        }, label: {Image(systemName: "plus.circle").resizable()
+        }, label: {Image(systemName: "plus.circle")
                 .foregroundColor(.red)
-                .frame(width: 30.0, height: 30.0)
+            
             
         })
     }
@@ -51,12 +55,12 @@ struct ContentView: View {
         
         Button(action: {
             
-            emojiCount -= 1
+            if(emojiCount > 1){
+                
+                emojiCount -= 1
+            }
             
-        }, label: {Image(systemName: "minus.circle").resizable()
-            
-                .frame(width: 30.0, height: 30.0)
-              
+        }, label: {Image(systemName: "minus.circle")
                 .foregroundColor(.red)
             
         })
@@ -67,10 +71,10 @@ struct ContentView: View {
 struct CardView: View{
     
     var content: String
-   @State var isFaceUp: Bool = false
+    @State var isFaceUp: Bool = false
     var body: some View{
-       
-    
+        
+        
         ZStack(){
             
             let shape = RoundedRectangle(cornerRadius: 20)
@@ -94,16 +98,16 @@ struct CardView: View{
         
     }
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
     
     
 struct ContentView_Previews: PreviewProvider {
