@@ -15,9 +15,12 @@ struct ContentView: View {
     var body: some View {
         VStack{
             
-            LazyVGrid(columns:[GridItem(), GridItem(), GridItem()]){
-                ForEach(emojis[0..<emojiCount], id: \.self) {emoji in
-                    CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
+            ScrollView{
+                LazyVGrid(columns:[GridItem(), GridItem(), GridItem()]){
+                    ForEach(emojis[0..<emojiCount], id: \.self) {emoji in
+                        CardView(content: emoji)
+                            .aspectRatio(2/3, contentMode: .fit)
+                    }
                 }
             }
             .padding(.horizontal)
@@ -77,7 +80,8 @@ struct CardView: View{
                 
                 shape.fill().foregroundColor(.white)
                 
-                shape.stroke().foregroundColor(.blue)
+                shape.strokeBorder(lineWidth: 4)
+                    .foregroundColor(.blue)
                 
                 Text(content).font(.largeTitle)
             }
